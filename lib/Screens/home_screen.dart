@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../services/api_service.dart';
-import '../services/cache_service.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import '../Services/api_service.dart';
+import '../Services/cache_service.dart';
 import 'details_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _fetchLaunches();
+    NetworkService.checkConnectivity();  // Check connectivity on startup
   }
 
   Future<void> _fetchLaunches() async {
@@ -219,5 +222,24 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
     );
+  }
+}
+
+class NetworkService {
+  static Future<void> checkConnectivity() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+
+    if (connectivityResult == ConnectivityResult.none) {
+      // Show toast message when offline
+      Fluttertoast.showToast(
+        msg: "You are offline",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    }
   }
 }

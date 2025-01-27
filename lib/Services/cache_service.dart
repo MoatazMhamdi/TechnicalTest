@@ -16,7 +16,6 @@ class CacheService {
     return box.get(key);
   }
 
-  // Remove data (if needed for sync purposes)
   void removeData(String key) {
     final box = Hive.box('cache');
     box.delete(key);

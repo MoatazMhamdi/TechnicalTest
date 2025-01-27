@@ -35,8 +35,7 @@ dependencies:
   hive_flutter: ^1.1.0
   provider: ^6.0.5
   fluttertoast: ^8.0.9
-  connectivity_plus: ^2.3.0
-
+  connectivity_plus: ^4.0.0  # Or the latest version
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
