@@ -36,7 +36,7 @@ class DetailScreen extends StatelessWidget {
               children: [
                 Text(
                   type == 'launch'
-                      ? 'Name: ${data['mission_name']}'
+                      ? 'Mission: ${data['mission_name']}'
                       : 'Mission: ${data['name']}',
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
